@@ -10,7 +10,7 @@ import model.Database;
 import model.Voditelj;
 
 public class VoditeljController {
-	
+
 	Voditelj voditelj = new Voditelj();
 
 	public boolean addVoditelj(String ime, String prezime, String korisnickoIme, String password) {
@@ -39,7 +39,6 @@ public class VoditeljController {
 	}
 
 	public List<String> getAllVoditelj() {
-		
 		List<String> listaVoditelja = new ArrayList<String>();
 
 		String query = "select * from voditelj";
@@ -55,9 +54,9 @@ public class VoditeljController {
 					voditelj.setId(rs.getInt(1));
 					voditelj.setIme(rs.getString(2));
 					voditelj.setPrezime(rs.getString(3));
-					
-					listaVoditelja.add(
-							rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getString(4));
+					voditelj.setKorisnickoIme(rs.getString(4));
+					listaVoditelja.add(voditelj.getId() + ", " + voditelj.getIme() + ", " + voditelj.getPrezime() + ", "
+							+ voditelj.getKorisnickoIme());
 				}
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
@@ -129,7 +128,10 @@ public class VoditeljController {
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
-					zaposlenikList.add(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
+					voditelj.setId(rs.getInt(1));
+					voditelj.setIme(rs.getString(2));
+					voditelj.setPrezime(rs.getString(3));
+					zaposlenikList.add(voditelj.getId() + " " + voditelj.getIme() + " " + voditelj.getPrezime());
 				}
 
 			} catch (SQLException e1) {
@@ -147,19 +149,24 @@ public class VoditeljController {
 	public List<String> findVoditeljById(Integer id) {
 		List<String> voditeljList = new ArrayList<String>();
 		voditelj.setId(id);
-		
+
 		String query = "select id, ime, prezime, korisnicko_ime from rsrdoc.voditelj where id=?";
 
 		try {
 			Connection conn = Database.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(query);
 			stmt.setInt(1, voditelj.getId());
-			
+
 			try {
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
-					voditeljList.add(rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getString(4));
+					voditelj.setId(rs.getInt(1));
+					voditelj.setIme(rs.getString(2));
+					voditelj.setPrezime(rs.getString(3));
+					voditelj.setKorisnickoIme(rs.getString(4));
+					voditeljList.add(
+							voditelj.getId() + ", " + voditelj.getIme() + ", " + voditelj.getPrezime() + ", " + voditelj.getKorisnickoIme());
 				}
 
 			} catch (SQLException e1) {

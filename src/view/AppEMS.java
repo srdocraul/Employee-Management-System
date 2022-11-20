@@ -737,6 +737,8 @@ public class AppEMS {
 		}
 	}
 
+	final JLabel label = new JLabel();
+
 	private void deleteMojProfil() {
 		int selectedRow = mojProfilTable.getSelectedRow();
 		boolean deletedVoditelj = false;
@@ -744,9 +746,17 @@ public class AppEMS {
 		if (selectedRow == -1)
 			JOptionPane.showMessageDialog(null, "Prvo izaberite polje tablice");
 		else {
-			int idVoditelj = Integer
-					.parseInt((String) mojProfilTable.getModel().getValueAt(mojProfilTable.getSelectedRow(), 0));
-			deletedVoditelj = voditeljController.deleteVoditelj(idVoditelj);
+			int result = JOptionPane.showConfirmDialog(frame, "Jeste li sigurni?", "Brisanje profila",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if (result == JOptionPane.YES_OPTION) {
+				int idVoditelj = Integer
+						.parseInt((String) mojProfilTable.getModel().getValueAt(mojProfilTable.getSelectedRow(), 0));
+				deletedVoditelj = voditeljController.deleteVoditelj(idVoditelj);
+			} else if (result == JOptionPane.NO_OPTION) {
+				label.setText("Odabrali ste: NE");
+			} else {
+				label.setText("Nista oznaceno");
+			}
 
 			if (!deletedVoditelj)
 				JOptionPane.showMessageDialog(null, "Profil nije obrisan");

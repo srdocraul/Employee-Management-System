@@ -11,9 +11,9 @@ import model.Database;
 import model.Zaposlenik;
 
 public class ZaposlenikController {
+	Zaposlenik zaposlenik = new Zaposlenik();
 
 	public boolean addZaposlenik(String ime, String prezime, Date datumRodenja) {
-		Zaposlenik zaposlenik = new Zaposlenik();
 		zaposlenik.setIme(ime);
 		zaposlenik.setPrezime(prezime);
 		zaposlenik.setDatumRodenja(datumRodenja);
@@ -49,8 +49,12 @@ public class ZaposlenikController {
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
-					listaZaposlenika
-							.add(rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getDate(4));
+					zaposlenik.setId(rs.getInt(1));
+					zaposlenik.setIme(rs.getString(2));
+					zaposlenik.setPrezime(rs.getString(3));
+					zaposlenik.setDatumRodenja(rs.getDate(4));
+					listaZaposlenika.add(zaposlenik.getId() + ", " + zaposlenik.getIme() + ", "
+							+ zaposlenik.getPrezime() + ", " + zaposlenik.getDatumRodenja());
 				}
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
@@ -72,7 +76,7 @@ public class ZaposlenikController {
 		zaposlenik.setIme(ime);
 		zaposlenik.setPrezime(prezime);
 		zaposlenik.setDatumRodenja(datumRodenja);
-		
+
 		String query = "update zaposlenik set ime =?, prezime =?, datum_rodenja =? WHERE id =?";
 
 		try {
@@ -108,32 +112,35 @@ public class ZaposlenikController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return false;
 	}
-	
-	public List<String> getZaposlenikIdImePrezime(){
+
+	public List<String> getZaposlenikIdImePrezime() {
 		List<String> zaposlenikList = new ArrayList<String>();
-		
+
 		String query = "select id, ime, prezime from rsrdoc.zaposlenik";
-		
+
 		try {
 			Connection conn = Database.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(query);
-			try{
+			try {
 				ResultSet rs = stmt.executeQuery();
-			
-				while(rs.next()) {
-					zaposlenikList.add(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+
+				while (rs.next()) {
+					zaposlenik.setId(rs.getInt(1));
+					zaposlenik.setIme(rs.getString(2));
+					zaposlenik.setPrezime(rs.getString(3));
+					zaposlenikList.add(zaposlenik.getId() + " " + zaposlenik.getIme() + " " + zaposlenik.getPrezime());
 				}
-			
-			}catch(SQLException e1) {
+
+			} catch (SQLException e1) {
 				System.out.println(e1);
 			}
-			
-			return zaposlenikList ;
-			
-		}catch(SQLException e) {
+
+			return zaposlenikList;
+
+		} catch (SQLException e) {
 			zaposlenikList = null;
 			return zaposlenikList;
 		}
