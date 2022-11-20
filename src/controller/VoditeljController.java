@@ -10,6 +10,7 @@ import model.Database;
 import model.Voditelj;
 
 public class VoditeljController {
+	
 	Voditelj voditelj = new Voditelj();
 
 	public boolean addVoditelj(String ime, String prezime, String korisnickoIme, String password) {
@@ -38,6 +39,7 @@ public class VoditeljController {
 	}
 
 	public List<String> getAllVoditelj() {
+		
 		List<String> listaVoditelja = new ArrayList<String>();
 
 		String query = "select * from voditelj";
@@ -50,6 +52,10 @@ public class VoditeljController {
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
+					voditelj.setId(rs.getInt(1));
+					voditelj.setIme(rs.getString(2));
+					voditelj.setPrezime(rs.getString(3));
+					
 					listaVoditelja.add(
 							rs.getInt(1) + ", " + rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getString(4));
 				}
