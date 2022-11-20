@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 public class Database {
 	private static Connection conn;
 	private final String URL = "jdbc:mysql://student.veleri.hr/rsrdoc?serverTimezone=UTC";
-	private final String USERNAME = "";
-	private final String PASSWORD = "";
+	private final String USERNAME = "rsrdoc";
+	private final String PASSWORD = "11";
 	private static Database database = new Database();
 
 	private Database() {

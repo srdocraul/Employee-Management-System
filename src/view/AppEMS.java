@@ -38,14 +38,14 @@ import javax.swing.JPasswordField;
 
 public class AppEMS {
 
-	ZaposlenikController zaposlenikController = new ZaposlenikController();
-	RadnoMjestoController radnoMjestoController = new RadnoMjestoController();
-	RadnoMjestoToZaposlenikController radnoMjestoToZaposlenikController = new RadnoMjestoToZaposlenikController();
-	VoditeljController voditeljController = new VoditeljController();
-	RadnoMjestoToVoditeljController radnoMjestoToVoditeljController = new RadnoMjestoToVoditeljController();
-	PasswordValidator passwordValidator = new PasswordValidator();
-	EncryptPassword encryptPassword = new EncryptPassword();
-
+	private final ZaposlenikController zaposlenikController;
+	private final RadnoMjestoController radnoMjestoController;
+	private final RadnoMjestoToZaposlenikController radnoMjestoToZaposlenikController;
+	private final VoditeljController voditeljController;
+	private final RadnoMjestoToVoditeljController radnoMjestoToVoditeljController;
+	private final EncryptPassword encryptPassword;
+	private final PasswordValidator passwordValidator;
+	
 	private JFrame frame;
 	private JTextField dohvatiIme;
 	private JTextField ime;
@@ -63,6 +63,8 @@ public class AppEMS {
 	private JTable radnoMjestoToVoditeljTable;
 	private JTable mojProfilTable;
 	private JLabel IdVoditelj;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -84,6 +86,13 @@ public class AppEMS {
 	 * Create the application.
 	 */
 	public AppEMS() {
+		this.zaposlenikController = new ZaposlenikController();
+		this.radnoMjestoController = new RadnoMjestoController();
+		this.radnoMjestoToZaposlenikController = new RadnoMjestoToZaposlenikController();
+		this.voditeljController = new VoditeljController();
+		this.radnoMjestoToVoditeljController = new RadnoMjestoToVoditeljController();
+		this.encryptPassword = new EncryptPassword();
+		this.passwordValidator = new PasswordValidator();
 		initialize();
 	}
 
@@ -691,7 +700,7 @@ public class AppEMS {
 		if (ime.isEmpty() || prezime.isEmpty() || korisnickoIme.isEmpty())
 			JOptionPane.showMessageDialog(null, "Sva polja su obavezna!");
 		else {
-			if (!PasswordValidator.isValid(password))
+			if (!passwordValidator.isValid(password))
 				JOptionPane.showMessageDialog(null,
 						"The password must contain at least one lowercase character, one uppercase character, "
 								+ "one digit, one special character, and a length between 8 to 20.");
