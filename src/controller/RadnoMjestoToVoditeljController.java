@@ -54,6 +54,9 @@ public class RadnoMjestoToVoditeljController {
 
 				while (rs.next()) {
 					voditelj.setId(rs.getInt(4));
+					voditelj.setIme(rs.getString(1));
+					voditelj.setPrezime(rs.getString(2));
+					radnoMjesto.setRadnoMjesto(rs.getString(3));
 
 					try {
 						String queryZaposlenik = "select count(zaposlenik_radno_mjesto.id_zaposlenik) from rsrdoc.zaposlenik_radno_mjesto where id_radno_mjesto =?";
@@ -68,8 +71,8 @@ public class RadnoMjestoToVoditeljController {
 						System.out.println(e);
 					}
 
-					radnoMjestoToVoditeljList.add(rs.getString(1) + " " + rs.getString(2) + ", " + rs.getString(3)
-							+ ", " + zaposlenik.getBrojZaposlenika());
+					radnoMjestoToVoditeljList.add(voditelj.getIme() + " " + voditelj.getPrezime() + ", "
+							+ radnoMjesto.getRadnoMjesto() + ", " + zaposlenik.getBrojZaposlenika());
 				}
 			} catch (SQLException e1) {
 				System.out.println(e1);

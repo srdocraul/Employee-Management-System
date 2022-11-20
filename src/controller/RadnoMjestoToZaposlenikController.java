@@ -12,11 +12,13 @@ import model.RadnoMjesto;
 import model.Zaposlenik;
 
 public class RadnoMjestoToZaposlenikController {
-	
+
+	RadnoMjesto radnoMjesto = new RadnoMjesto();
+	Zaposlenik zaposlenik = new Zaposlenik();
+
 	public boolean assignRadnoMjestoToZaposlenik(int idRadnoMjesto, int idZaposlenik) {
-		RadnoMjesto radnoMjesto = new RadnoMjesto();
+
 		radnoMjesto.setId(idRadnoMjesto);
-		Zaposlenik zaposlenik = new Zaposlenik();
 		zaposlenik.setId(idZaposlenik);
 
 		String query = "insert into rsrdoc.zaposlenik_radno_mjesto(id_radno_mjesto, id_zaposlenik) values(?,?)";
@@ -35,7 +37,7 @@ public class RadnoMjestoToZaposlenikController {
 	}
 
 	public List<String> getAllRadnoMjestoToZaposlenik() {
-		
+
 		List<String> radnoMjestoToZaposlenikList = new ArrayList<String>();
 
 		String query = "select zaposlenik.ime, zaposlenik.prezime, radno_mjesto.naziv from rsrdoc.zaposlenik_radno_mjesto "
@@ -49,7 +51,11 @@ public class RadnoMjestoToZaposlenikController {
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
-					radnoMjestoToZaposlenikList.add(rs.getString(1) + " " + rs.getString(2) + ", " + rs.getString(3));
+					zaposlenik.setIme(rs.getString(1));
+					zaposlenik.setPrezime(rs.getString(2));
+					radnoMjesto.setRadnoMjesto(rs.getString(3));
+					radnoMjestoToZaposlenikList.add(
+							zaposlenik.getIme() + " " + zaposlenik.getPrezime() + ", " + radnoMjesto.getRadnoMjesto());
 				}
 			} catch (SQLException e1) {
 				System.out.println(e1);
