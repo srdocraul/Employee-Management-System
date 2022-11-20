@@ -10,6 +10,7 @@ public class Zaposlenik {
 	private String prezime;
 	private Date datumRodenja;
 	private RadnoMjesto radnoMjesto;
+	private Integer brojZaposlenika;
 
 	
 	public Zaposlenik() {
@@ -62,11 +63,17 @@ public class Zaposlenik {
 	public void setRadnoMjesto(RadnoMjesto radnoMjesto) {
 		this.radnoMjesto = radnoMjesto;
 	}
+	public Integer getBrojZaposlenika() {
+		return brojZaposlenika;
+	}
 
+	public void setBrojZaposlenika(Integer brojZaposlenika) {
+		this.brojZaposlenika = brojZaposlenika;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(datumRodenja, ime, prezime, radnoMjesto);
+		return Objects.hash(brojZaposlenika, datumRodenja, ime, prezime, radnoMjesto);
 	}
 
 	@Override
@@ -78,13 +85,14 @@ public class Zaposlenik {
 		if (getClass() != obj.getClass())
 			return false;
 		Zaposlenik other = (Zaposlenik) obj;
-		return Objects.equals(datumRodenja, other.datumRodenja) && Objects.equals(ime, other.ime)
+		return Objects.equals(brojZaposlenika, other.brojZaposlenika)
+				&& Objects.equals(datumRodenja, other.datumRodenja) && Objects.equals(ime, other.ime)
 				&& Objects.equals(prezime, other.prezime) && Objects.equals(radnoMjesto, other.radnoMjesto);
 	}
 
 	@Override
 	public String toString() {
-		return "Zaposlenik ime=" + ime + ", datumRodenja=" + datumRodenja + ", radnoMjesto=" + radnoMjesto;
+		return "Zaposlenik [ime=" + ime + ", prezime=" + prezime + ", datumRodenja=" + datumRodenja + ", radnoMjesto="
+				+ radnoMjesto + ", brojZaposlenika=" + brojZaposlenika + "]";
 	}
-	
 }
