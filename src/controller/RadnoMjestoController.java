@@ -11,16 +11,17 @@ import model.RadnoMjesto;
 
 public class RadnoMjestoController {
 
+	RadnoMjesto radnoMjesto = new RadnoMjesto();
+
 	public boolean addRadnoMjesto(String radnoMjesto) {
 
-		RadnoMjesto radnoMjesto1 = new RadnoMjesto(radnoMjesto);
-
+		this.radnoMjesto.setRadnoMjesto(radnoMjesto);
 		String query = "insert into radno_mjesto(naziv) values (?)";
 
 		try {
 			Connection conn = Database.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(query);
-			stmt.setString(1, radnoMjesto1.getRadnoMjesto());
+			stmt.setString(1, this.radnoMjesto.getRadnoMjesto());
 			stmt.execute();
 			return true;
 		} catch (SQLException e) {
@@ -31,8 +32,8 @@ public class RadnoMjestoController {
 	}
 
 	public List<String> getAllRadnoMjesto() {
-		List<String> listaRadnoMjesto = new ArrayList<String>();
 
+		List<String> listaRadnoMjesto = new ArrayList<String>();
 		String query = "select * from radno_mjesto";
 
 		try {
@@ -43,7 +44,9 @@ public class RadnoMjestoController {
 				ResultSet rs = stmt.executeQuery();
 
 				while (rs.next()) {
-					listaRadnoMjesto.add(rs.getInt(1) + ", " + rs.getString(2));
+					radnoMjesto.setId(rs.getInt(1));
+					radnoMjesto.setRadnoMjesto(rs.getString(2));
+					listaRadnoMjesto.add(radnoMjesto.getId() + ", " + radnoMjesto.getRadnoMjesto());
 				}
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());

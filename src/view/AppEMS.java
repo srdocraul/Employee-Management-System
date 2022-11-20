@@ -161,6 +161,7 @@ public class AppEMS {
 		JButton btnNewButton_17 = new JButton("PROMJENA \u0160IFRE");
 		btnNewButton_17.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
 				String labelText = IdVoditelj.getText();
 				PromjenaSifreVoditelja window = new PromjenaSifreVoditelja();
 				window.getIdVoditeljPromjenaSifra().setText(labelText);
@@ -695,13 +696,13 @@ public class AppEMS {
 						"The password must contain at least one lowercase character, one uppercase character, "
 								+ "one digit, one special character, and a length between 8 to 20.");
 			else {
-				JOptionPane.showMessageDialog(null, "Uspješno dodavanje!");
+				JOptionPane.showMessageDialog(null, "Uspjeï¿½no dodavanje!");
 				encryptedPassword = encryptPassword.encrypt(password);
 
 				voditeljIsAdded = voditeljController.addVoditelj(ime, prezime, korisnickoIme, encryptedPassword);
 
 				if (!voditeljIsAdded)
-					JOptionPane.showMessageDialog(null, "Neuspješno dodavanje!");
+					JOptionPane.showMessageDialog(null, "Neuspjeï¿½no dodavanje!");
 
 				imeVoditelj.setText("");
 				prezimeVoditelj.setText("");

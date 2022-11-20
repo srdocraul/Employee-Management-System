@@ -142,8 +142,7 @@ public class PromjenaSifreVoditelja {
 	public void setFrame(JFrame frame) {
 		this.frmPromjenaSifre = frame;
 		frmPromjenaSifre.setTitle("Promjena sifre");
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setAlwaysOnTop(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public JLabel getIdVoditeljPromjenaSifra() {
