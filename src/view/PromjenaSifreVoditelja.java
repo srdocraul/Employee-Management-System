@@ -17,7 +17,8 @@ import java.awt.event.ActionEvent;
 
 public class PromjenaSifreVoditelja {
 
-	LoginController loginController = new LoginController();
+	private final LoginController loginController;
+	private final PasswordValidator passwordValidator;
 
 	private JFrame frmPromjenaSifre;
 	private JPasswordField trenutnaSifra;
@@ -46,6 +47,8 @@ public class PromjenaSifreVoditelja {
 	 * Create the application.
 	 */
 	public PromjenaSifreVoditelja() {
+		this.loginController = new LoginController();
+		this.passwordValidator = new PasswordValidator();
 		initialize();
 	}
 
@@ -100,7 +103,7 @@ public class PromjenaSifreVoditelja {
 					char[] ponoviP = ponoviSifra.getPassword();
 					String ponoviPasword = new String(ponoviP);
 
-					if (!PasswordValidator.isValid(noviPasword))
+					if (!passwordValidator.isValid(noviPasword))
 						JOptionPane.showMessageDialog(null,
 								"The password must contain at least one lowercase character, one uppercase character, "
 										+ "one digit, one special character, and a length between 8 to 20.");
@@ -112,7 +115,7 @@ public class PromjenaSifreVoditelja {
 							String upisNovogPassword = encryptPassword.encrypt(noviPasword);
 							JOptionPane.showMessageDialog(null, "Uspjesna promjena sifre");
 							loginController.updatePassword(idVoditelj, upisNovogPassword);
-							
+
 							frmPromjenaSifre.dispose();
 							Login window = new Login();
 							window.getFrmEmployeeManagementSystem().setVisible(true);

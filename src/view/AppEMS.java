@@ -45,7 +45,7 @@ public class AppEMS {
 	private final RadnoMjestoToVoditeljController radnoMjestoToVoditeljController;
 	private final EncryptPassword encryptPassword;
 	private final PasswordValidator passwordValidator;
-	
+
 	private JFrame frame;
 	private JTextField dohvatiIme;
 	private JTextField ime;
@@ -63,8 +63,6 @@ public class AppEMS {
 	private JTable radnoMjestoToVoditeljTable;
 	private JTable mojProfilTable;
 	private JLabel IdVoditelj;
-	
-	
 
 	/**
 	 * Launch the application.
@@ -118,70 +116,12 @@ public class AppEMS {
 		final JPanel zaposleniciPanel = new JPanel();
 		zaposleniciPanel.setVisible(false);
 
+		JPanel mojProfilPanel = new JPanel();
+		mojProfilPanel.setVisible(false);
+
 		JPanel voditeljiPanel = new JPanel();
 		voditeljiPanel.setBackground(new Color(255, 255, 153));
 		voditeljiPanel.setVisible(false);
-
-		JPanel mojProfilPanel = new JPanel();
-		mojProfilPanel.setVisible(false);
-		mojProfilPanel.setBackground(new Color(255, 255, 153));
-		mojProfilPanel.setBounds(10, 111, 948, 299);
-		frame.getContentPane().add(mojProfilPanel);
-		mojProfilPanel.setLayout(null);
-
-		JLabel lblNewLabel_13 = new JLabel("MOJ PROFIL");
-		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_13.setBounds(390, 11, 182, 44);
-		mojProfilPanel.add(lblNewLabel_13);
-
-		JScrollPane scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(10, 118, 928, 52);
-		mojProfilPanel.add(scrollPane_5);
-
-		mojProfilTable = new JTable();
-		scrollPane_5.setViewportView(mojProfilTable);
-		mojProfilTable.setModel(
-				new DefaultTableModel(new Object[][] {}, new String[] { "ID", "Ime", "Prezime", "Korisnicko Ime" }));
-
-		JButton btnNewButton_14 = new JButton("A\u017DURIRAJ");
-		btnNewButton_14.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				updateMojProfil();
-				refreshTableMojProfil();
-			}
-		});
-		btnNewButton_14.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton_14.setBackground(Color.WHITE);
-		btnNewButton_14.setBounds(549, 82, 102, 23);
-		mojProfilPanel.add(btnNewButton_14);
-
-		JButton btnNewButton_16 = new JButton("IZBRI\u0160I");
-		btnNewButton_16.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				deleteMojProfil();
-			}
-		});
-		btnNewButton_16.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton_16.setBackground(Color.WHITE);
-		btnNewButton_16.setBounds(661, 82, 89, 23);
-		mojProfilPanel.add(btnNewButton_16);
-
-		JButton btnNewButton_17 = new JButton("PROMJENA \u0160IFRE");
-		btnNewButton_17.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				String labelText = IdVoditelj.getText();
-				PromjenaSifreVoditelja window = new PromjenaSifreVoditelja();
-				window.getIdVoditeljPromjenaSifra().setText(labelText);
-				window.getFrame().setLocationRelativeTo(null);
-				window.getFrame().setVisible(true);
-			}
-		});
-		btnNewButton_17.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton_17.setBackground(Color.WHITE);
-		btnNewButton_17.setBounds(760, 82, 166, 23);
-		mojProfilPanel.add(btnNewButton_17);
 		voditeljiPanel.setBounds(10, 111, 948, 299);
 		frame.getContentPane().add(voditeljiPanel);
 		voditeljiPanel.setLayout(null);
@@ -249,6 +189,64 @@ public class AppEMS {
 		btnNewButton_4.setBackground(Color.WHITE);
 		btnNewButton_4.setBounds(355, 110, 89, 23);
 		voditeljiPanel.add(btnNewButton_4);
+		mojProfilPanel.setBackground(new Color(255, 255, 153));
+		mojProfilPanel.setBounds(10, 111, 948, 299);
+		frame.getContentPane().add(mojProfilPanel);
+		mojProfilPanel.setLayout(null);
+
+		JLabel lblNewLabel_13 = new JLabel("MOJ PROFIL");
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_13.setBounds(390, 11, 182, 44);
+		mojProfilPanel.add(lblNewLabel_13);
+
+		JScrollPane scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(10, 118, 928, 52);
+		mojProfilPanel.add(scrollPane_5);
+
+		mojProfilTable = new JTable();
+		scrollPane_5.setViewportView(mojProfilTable);
+		mojProfilTable.setModel(
+				new DefaultTableModel(new Object[][] {}, new String[] { "ID", "Ime", "Prezime", "Korisnicko Ime" }));
+
+		JButton btnNewButton_14 = new JButton("A\u017DURIRAJ");
+		btnNewButton_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateMojProfil();
+				refreshTableMojProfil();
+			}
+		});
+		btnNewButton_14.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnNewButton_14.setBackground(Color.WHITE);
+		btnNewButton_14.setBounds(549, 82, 102, 23);
+		mojProfilPanel.add(btnNewButton_14);
+
+		JButton btnNewButton_16 = new JButton("IZBRI\u0160I");
+		btnNewButton_16.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deleteMojProfil();
+			}
+		});
+		btnNewButton_16.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnNewButton_16.setBackground(Color.WHITE);
+		btnNewButton_16.setBounds(661, 82, 89, 23);
+		mojProfilPanel.add(btnNewButton_16);
+
+		JButton btnNewButton_17 = new JButton("PROMJENA \u0160IFRE");
+		btnNewButton_17.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				String labelText = IdVoditelj.getText();
+				PromjenaSifreVoditelja window = new PromjenaSifreVoditelja();
+				window.getIdVoditeljPromjenaSifra().setText(labelText);
+				window.getFrame().setLocationRelativeTo(null);
+				window.getFrame().setVisible(true);
+			}
+		});
+		btnNewButton_17.setFont(new Font("Tahoma", Font.BOLD, 10));
+		btnNewButton_17.setBackground(Color.WHITE);
+		btnNewButton_17.setBounds(760, 82, 166, 23);
+		mojProfilPanel.add(btnNewButton_17);
 		zaposleniciPanel.setBackground(new Color(255, 255, 153));
 		zaposleniciPanel.setBounds(10, 111, 948, 300);
 		frame.getContentPane().add(zaposleniciPanel);
@@ -368,7 +366,6 @@ public class AppEMS {
 		btnNewButton_15.setBackground(Color.WHITE);
 		btnNewButton_15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				String[] zaposlenik = zaposlenikComboBox.getSelectedItem().toString().split(" ");
 				String[] radnoMjesto = radnoMjestoComboBox.getSelectedItem().toString().split(" ");
 				boolean dodijeljen = radnoMjestoToZaposlenikController.assignRadnoMjestoToZaposlenik(
@@ -376,9 +373,8 @@ public class AppEMS {
 
 				if (!dodijeljen)
 					JOptionPane.showMessageDialog(null, "Neuspjesno dodijeljivanje!");
-				else {
+				else
 					JOptionPane.showMessageDialog(null, "Uspjesno dodijeljivanje!");
-				}
 
 				refreshTableRadnoMjestoToZaposlenik();
 			}
@@ -486,7 +482,6 @@ public class AppEMS {
 		btnNewButton_12.setBackground(Color.WHITE);
 		btnNewButton_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				String[] voditelj = voditeljComboBox.getSelectedItem().toString().split(" ");
 				String[] radnoMjesto = radnoMjestoComboBox1.getSelectedItem().toString().split(" ");
 				boolean dodijeljen = radnoMjestoToVoditeljController
@@ -494,9 +489,8 @@ public class AppEMS {
 
 				if (!dodijeljen)
 					JOptionPane.showMessageDialog(null, "Neuspjesno dodijeljivanje!");
-				else {
+				else
 					JOptionPane.showMessageDialog(null, "Uspjesno dodijeljivanje!");
-				}
 
 				refreshTableRadnoMjestoToVoditelj();
 			}
@@ -688,7 +682,6 @@ public class AppEMS {
 	}
 
 	private void addVoditelj() {
-
 		String ime = imeVoditelj.getText();
 		String prezime = prezimeVoditelj.getText();
 		String korisnickoIme = korisnickoImeVoditelj.getText().toLowerCase();
@@ -705,7 +698,7 @@ public class AppEMS {
 						"The password must contain at least one lowercase character, one uppercase character, "
 								+ "one digit, one special character, and a length between 8 to 20.");
 			else {
-				JOptionPane.showMessageDialog(null, "Uspje�no dodavanje!");
+				JOptionPane.showMessageDialog(null, "Uspjesno dodavanje!");
 				encryptedPassword = encryptPassword.encrypt(password);
 
 				voditeljIsAdded = voditeljController.addVoditelj(ime, prezime, korisnickoIme, encryptedPassword);
@@ -740,9 +733,8 @@ public class AppEMS {
 
 			if (!updateVoditelj)
 				JOptionPane.showMessageDialog(null, "Voditelj nije azuriran");
-			else {
+			else
 				JOptionPane.showMessageDialog(null, "Voditelj je azuriran!");
-			}
 		}
 	}
 
@@ -767,9 +759,7 @@ public class AppEMS {
 				label.setText("Nista oznaceno");
 			}
 
-			if (!deletedVoditelj)
-				JOptionPane.showMessageDialog(null, "Profil nije obrisan");
-			else {
+			if (deletedVoditelj) {
 				JOptionPane.showMessageDialog(null, "Profil je obrisan!");
 				frame.dispose();
 				Login window = new Login();
@@ -779,7 +769,6 @@ public class AppEMS {
 	}
 
 	private void addZaposlenik() {
-
 		String imes = ime.getText();
 		String prezimes = prezime.getText();
 		String datumR = godinaRodenja.getText();
@@ -808,7 +797,6 @@ public class AppEMS {
 
 				if (!zaposlenikIsAdded)
 					JOptionPane.showMessageDialog(null, "Neuspjesno upisivanje zaposlenika");
-
 				ime.setText("");
 				prezime.setText("");
 				godinaRodenja.setText("");
@@ -817,7 +805,6 @@ public class AppEMS {
 	}
 
 	private void updateZaposlenik() {
-
 		boolean updateZaposlenika = false;
 		int selectedRow = zaposleniciTable.getSelectedRow();
 		Date dateDR = null;
@@ -846,14 +833,12 @@ public class AppEMS {
 
 			if (!updateZaposlenika)
 				JOptionPane.showMessageDialog(null, "Zaposlenik nije azuriran");
-			else {
+			else
 				JOptionPane.showMessageDialog(null, "Zaposlenik je azuriran!");
-			}
 		}
 	}
 
 	private void deleteZaposlenik() {
-
 		int selectedRow = zaposleniciTable.getSelectedRow();
 		boolean deletedZaposlenik = false;
 		if (selectedRow == -1)
@@ -865,14 +850,12 @@ public class AppEMS {
 
 			if (!deletedZaposlenik)
 				JOptionPane.showMessageDialog(null, "Zaposlenik nije obrisan");
-			else {
+			else
 				JOptionPane.showMessageDialog(null, "Zaposlenik je obrisan!");
-			}
 		}
 	}
 
 	private void addRadnoMjesto() {
-
 		boolean addRadnoMjesto = false;
 		String radnoMjestos = radnoMjesto.getText();
 
@@ -891,7 +874,6 @@ public class AppEMS {
 	}
 
 	private void updateRadnoMjesto() {
-
 		boolean updateRadnoMjesto = false;
 		int selectedRow = radnoMjestoTable.getSelectedRow();
 
@@ -907,14 +889,12 @@ public class AppEMS {
 
 			if (!updateRadnoMjesto)
 				JOptionPane.showMessageDialog(null, "Radno mjesto nije azurirano");
-			else {
+			else
 				JOptionPane.showMessageDialog(null, "Radno mjesto je azurirano!");
-			}
 		}
 	}
 
 	private void deleteRadnoMjesto() {
-
 		int selectedRow = radnoMjestoTable.getSelectedRow();
 		boolean deletedRadnoMjesto = false;
 
@@ -927,15 +907,12 @@ public class AppEMS {
 
 			if (!deletedRadnoMjesto)
 				JOptionPane.showMessageDialog(null, "Radno mjesto nije obrisano");
-			else {
-
+			else
 				JOptionPane.showMessageDialog(null, "Radno mjesto je obrisano!");
-			}
 		}
 	}
 
 	private static boolean isValid(final String date) {
-
 		boolean valid = false;
 
 		try {
@@ -949,7 +926,6 @@ public class AppEMS {
 	}
 
 	private void refreshTableZaposlenik() {
-
 		String[] spliter;
 		List<String> listaZaposlenik = zaposlenikController.getAllZaposlenik();
 		DefaultTableModel tables = (DefaultTableModel) zaposleniciTable.getModel();
@@ -960,14 +936,12 @@ public class AppEMS {
 			tables.setRowCount(0);
 			for (String zaposlenik : listaZaposlenik) {
 				spliter = zaposlenik.split(", ");
-
 				tables.addRow(spliter);
 			}
 		}
 	}
 
 	private void refreshTableVoditelji() {
-
 		String[] spliter;
 		List<String> listaVoditelj = voditeljController.getAllVoditelj();
 		DefaultTableModel tables = (DefaultTableModel) voditeljTable.getModel();
@@ -978,7 +952,6 @@ public class AppEMS {
 			tables.setRowCount(0);
 			for (String voditelj : listaVoditelj) {
 				spliter = voditelj.split(", ");
-
 				tables.addRow(spliter);
 			}
 		}
@@ -997,14 +970,12 @@ public class AppEMS {
 			tables.setRowCount(0);
 			for (String voditelj : listaVoditelj) {
 				spliter = voditelj.split(", ");
-
 				tables.addRow(spliter);
 			}
 		}
 	}
 
 	private void refreshTableRadnoMjesto() {
-
 		String[] spliter;
 		List<String> listaRadnoMjesto = radnoMjestoController.getAllRadnoMjesto();
 		DefaultTableModel tables = (DefaultTableModel) radnoMjestoTable.getModel();
@@ -1015,14 +986,12 @@ public class AppEMS {
 			tables.setRowCount(0);
 			for (String zaposlenik : listaRadnoMjesto) {
 				spliter = zaposlenik.split(", ");
-
 				tables.addRow(spliter);
 			}
 		}
 	}
 
 	private void refreshTableRadnoMjestoToZaposlenik() {
-
 		String[] spliter;
 		List<String> listaRadnoMjestoToZaposlenik = radnoMjestoToZaposlenikController.getAllRadnoMjestoToZaposlenik();
 		DefaultTableModel tables = (DefaultTableModel) radnoMjestoToZaposlenikTable.getModel();
@@ -1033,14 +1002,12 @@ public class AppEMS {
 			tables.setRowCount(0);
 			for (String radnoMjestoToZaposlenik : listaRadnoMjestoToZaposlenik) {
 				spliter = radnoMjestoToZaposlenik.split(", ");
-
 				tables.addRow(spliter);
 			}
 		}
 	}
 
 	private void refreshTableRadnoMjestoToVoditelj() {
-
 		String[] spliter;
 		List<String> listaRadnoMjestoToVoditelj = radnoMjestoToVoditeljController.getAllRadnoMjestoToZaposlenik();
 		DefaultTableModel tables = (DefaultTableModel) radnoMjestoToVoditeljTable.getModel();
@@ -1051,7 +1018,6 @@ public class AppEMS {
 			tables.setRowCount(0);
 			for (String radnoMjestoToVoditelj : listaRadnoMjestoToVoditelj) {
 				spliter = radnoMjestoToVoditelj.split(", ");
-
 				tables.addRow(spliter);
 			}
 		}

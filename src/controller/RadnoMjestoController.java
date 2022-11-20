@@ -10,11 +10,9 @@ import model.Database;
 import model.RadnoMjesto;
 
 public class RadnoMjestoController {
-
 	RadnoMjesto radnoMjesto = new RadnoMjesto();
 
 	public boolean addRadnoMjesto(String radnoMjesto) {
-
 		this.radnoMjesto.setRadnoMjesto(radnoMjesto);
 		String query = "insert into radno_mjesto(naziv) values (?)";
 
@@ -32,7 +30,6 @@ public class RadnoMjestoController {
 	}
 
 	public List<String> getAllRadnoMjesto() {
-
 		List<String> listaRadnoMjesto = new ArrayList<String>();
 		String query = "select * from radno_mjesto";
 
@@ -104,7 +101,6 @@ public class RadnoMjestoController {
 	}
 
 	public List<String> getRadnoMjestoIdAndName() {
-
 		List<String> listaRadnogMjesta = new ArrayList<String>();
 
 		String query = "select id, naziv from rsrdoc.radno_mjesto";

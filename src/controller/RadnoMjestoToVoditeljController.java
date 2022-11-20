@@ -13,7 +13,6 @@ import model.Voditelj;
 import model.Zaposlenik;
 
 public class RadnoMjestoToVoditeljController {
-
 	RadnoMjesto radnoMjesto = new RadnoMjesto();
 	Voditelj voditelj = new Voditelj();
 	Zaposlenik zaposlenik = new Zaposlenik();
@@ -39,7 +38,6 @@ public class RadnoMjestoToVoditeljController {
 	}
 
 	public List<String> getAllRadnoMjestoToZaposlenik() {
-
 		List<String> radnoMjestoToVoditeljList = new ArrayList<String>();
 
 		String query = "select voditelj.ime, voditelj.prezime, radno_mjesto.naziv, voditelj_radno_mjesto.id_radno_mjesto from rsrdoc.voditelj_radno_mjesto "
@@ -83,5 +81,4 @@ public class RadnoMjestoToVoditeljController {
 			return radnoMjestoToVoditeljList;
 		}
 	}
-
 }

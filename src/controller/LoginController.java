@@ -45,7 +45,6 @@ public class LoginController {
 				}
 
 				if (rs1.next()) {
-
 					String passwordIzUpita = rs1.getString(1);
 					String passwordCheck = encryptPassword.encrypt(voditelj.getPassword());
 
@@ -89,7 +88,6 @@ public class LoginController {
 	}
 	
 	public boolean updatePassword(Integer id, String password) {
-		
 		voditelj.setPassword(password);
 		voditelj.setId(id);
 		

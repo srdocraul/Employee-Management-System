@@ -1,18 +1,15 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Voditelj {
-	
+
 	private Integer id;
 	private String ime;
 	private String prezime;
 	private String korisnickoIme;
 	private String password;
-	private List<RadnoMjesto> radnoMjesto = new ArrayList<RadnoMjesto>();
-	
+
 	public Voditelj() {
 		super();
 	}
@@ -65,17 +62,9 @@ public class Voditelj {
 		this.password = password;
 	}
 
-	public List<RadnoMjesto> getRadnoMjesto() {
-		return radnoMjesto;
-	}
-
-	public void setRadnoMjesto(List<RadnoMjesto> radnoMjesto) {
-		this.radnoMjesto = radnoMjesto;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(ime, korisnickoIme, password, prezime, radnoMjesto);
+		return Objects.hash(ime, korisnickoIme, password, prezime);
 	}
 
 	@Override
@@ -88,14 +77,12 @@ public class Voditelj {
 			return false;
 		Voditelj other = (Voditelj) obj;
 		return Objects.equals(ime, other.ime) && Objects.equals(korisnickoIme, other.korisnickoIme)
-				&& Objects.equals(password, other.password) && Objects.equals(prezime, other.prezime)
-				&& Objects.equals(radnoMjesto, other.radnoMjesto);
+				&& Objects.equals(password, other.password) && Objects.equals(prezime, other.prezime);
 	}
 
 	@Override
 	public String toString() {
 		return "Admin [ime=" + ime + ", prezime=" + prezime + ", korisnickoIme=" + korisnickoIme + ", password="
-				+ password + ", radnoMjesto=" + radnoMjesto;
+				+ password;
 	}
-	
 }

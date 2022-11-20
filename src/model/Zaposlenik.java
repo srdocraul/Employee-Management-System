@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Zaposlenik {
-	
+
 	private Integer id;
 	private String ime;
 	private String prezime;
@@ -12,7 +12,6 @@ public class Zaposlenik {
 	private RadnoMjesto radnoMjesto;
 	private Integer brojZaposlenika;
 
-	
 	public Zaposlenik() {
 		super();
 	}
@@ -23,7 +22,7 @@ public class Zaposlenik {
 		this.prezime = prezime;
 		this.datumRodenja = datumRodenja;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -55,7 +54,7 @@ public class Zaposlenik {
 	public void setIme(String ime) {
 		this.ime = ime;
 	}
-	
+
 	public RadnoMjesto getRadnoMjesto() {
 		return radnoMjesto;
 	}
@@ -63,6 +62,7 @@ public class Zaposlenik {
 	public void setRadnoMjesto(RadnoMjesto radnoMjesto) {
 		this.radnoMjesto = radnoMjesto;
 	}
+
 	public Integer getBrojZaposlenika() {
 		return brojZaposlenika;
 	}
