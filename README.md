@@ -27,8 +27,8 @@ The employee management system is a desktop application that allows employers to
    <li>Clone the repository and navigate to the project directory</li>
    <li>Create a new MySQL database for the project</li>
    <li>Update the database class with your MySQL connection details</li>
-   <li>Use the username admin and password password to log in</li>
+   <li>Use the username <b>admin</b> and password <b>password</b> to log in</li>
 </ul>
 
 <h2>Conclusion</h2>
-The employee management system is a robust and user-friendly application that allows employers to easily manage their employees and workplace information. The use of Java Swing, MVC, MySQL, and Junit allows for a well-designed and well-tested application that is easy to set up and use.
+The employee management system is a robust and user-friendly application that allows employers to easily manage their employees and workplace information. The use of Java Swing, MVC, MySQL allows for a well-designed and well-tested application that is easy to set up and use.
